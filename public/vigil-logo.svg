@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <radialGradient id="core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#7dd3fc"/>
+      <stop offset="60%" style="stop-color:#0ea5e9"/>
+      <stop offset="100%" style="stop-color:#0369a1"/>
+    </radialGradient>
+    <radialGradient id="sweep-grad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:rgba(14,165,233,0.15)"/>
+      <stop offset="100%" style="stop-color:rgba(14,165,233,0)"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="glow-soft">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="200" height="200" fill="#080c10" rx="36"/>
+
+  <!-- Outer ring dashed -->
+  <circle cx="100" cy="100" r="82"
+          fill="none" stroke="#0ea5e9" stroke-width="1"
+          stroke-dasharray="10,6" opacity="0.2"
+          transform="rotate(-20 100 100)"/>
+
+  <!-- Mid ring dashed -->
+  <circle cx="100" cy="100" r="58"
+          fill="none" stroke="#0ea5e9" stroke-width="1"
+          stroke-dasharray="6,8" opacity="0.35"
+          transform="rotate(15 100 100)"/>
+
+  <!-- Inner ring solid -->
+  <circle cx="100" cy="100" r="34"
+          fill="none" stroke="#0ea5e9" stroke-width="1"
+          opacity="0.4"/>
+
+  <!-- Radar sweep slice -->
+  <path d="M100,100 L100,18 A82,82 0 0,1 182,100 Z"
+        fill="rgba(14,165,233,0.05)" stroke="none"/>
+
+  <!-- Sweep line -->
+  <line x1="100" y1="100" x2="182" y2="100"
+        stroke="#0ea5e9" stroke-width="1.5"
+        opacity="0.6" filter="url(#glow-soft)"/>
+
+  <!-- Cross hair -->
+  <line x1="100" y1="14"  x2="100" y2="66"
+        stroke="#0ea5e9" stroke-width="1" opacity="0.3"/>
+  <line x1="100" y1="134" x2="100" y2="186"
+        stroke="#0ea5e9" stroke-width="1" opacity="0.3"/>
+  <line x1="14"  y1="100" x2="66"  y2="100"
+        stroke="#0ea5e9" stroke-width="1" opacity="0.3"/>
+  <line x1="134" y1="100" x2="186" y2="100"
+        stroke="#0ea5e9" stroke-width="1" opacity="0.3"/>
+
+  <!-- Blips -->
+  <circle cx="148" cy="62" r="4"
+          fill="#38bdf8" filter="url(#glow)" opacity="0.9"/>
+  <circle cx="72"  cy="74" r="2.5"
+          fill="#38bdf8" filter="url(#glow)" opacity="0.5"/>
+
+  <!-- Core -->
+  <circle cx="100" cy="100" r="18"
+          fill="url(#core)" filter="url(#glow)"/>
+  <circle cx="100" cy="100" r="18"
+          fill="none" stroke="white" stroke-width="1" opacity="0.2"/>
+
+  <!-- Center dot -->
+  <circle cx="100" cy="100" r="5" fill="white" opacity="0.9"/>
+
+</svg>
