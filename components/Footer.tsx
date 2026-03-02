@@ -56,7 +56,7 @@ export default function Footer() {
       <div className="font-mono text-[0.65rem] text-[#7a8fa8] text-center md:text-right">
         MIT License
         <br />
-        v2.0 — 2026
+        v2.1 — 2026
       </div>
     </footer>
   );

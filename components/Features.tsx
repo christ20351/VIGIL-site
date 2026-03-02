@@ -1,6 +1,14 @@
 "use client";
 import { useEffect, useRef } from "react";
-import { Activity, Wifi, Cpu, Bell, Clock, Lock } from "lucide-react";
+import {
+  Activity,
+  Wifi,
+  Cpu,
+  Bell,
+  Clock,
+  Lock,
+  HardDrive,
+} from "lucide-react";
 
 const features = [
   {
@@ -32,6 +40,12 @@ const features = [
     icon: Lock,
     title: "Optional Auth",
     desc: "Token-based authentication with session cookies. Enable it with one flag — disabled by default for LAN use.",
+  },
+  {
+    icon: HardDrive,
+    title: "S.M.A.R.T. Disk Health",
+    desc: "Real-time PASSED/FAILED status, temperature charts, reallocated sectors, spin-up time and 30-day history for every NVMe and SATA/ATA drive. Automatic alerts on threshold breach.",
+    isNew: true,
   },
 ];
 
@@ -66,7 +80,7 @@ export default function Features() {
           <h2 className="text-[clamp(2rem,4vw,3.5rem)] font-black leading-tight tracking-tight">
             Everything you need.
             <br />
-            Nothing you don t.
+            Nothing you don&apos;t.
           </h2>
         </div>
 
@@ -75,13 +89,24 @@ export default function Features() {
                         grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px
                         bg-[rgba(14,165,233,0.15)] border border-[rgba(14,165,233,0.15)]"
         >
-          {features.map((f) => {
+          {features.map((f, index) => {
             const Icon = f.icon;
+            const isLast = index === features.length - 1;
+            const isOdd = features.length % 3 === 1;
             return (
               <div
                 key={f.title}
-                className="bg-[#080c10] p-8 md:p-10 hover:bg-[#111820] transition-colors duration-200"
+                className={`relative bg-[#080c10] p-8 md:p-10 hover:bg-[#111820] transition-colors duration-200
+                  ${isLast && isOdd ? "lg:col-start-2" : ""}`}
               >
+                {f.isNew && (
+                  <span
+                    className="absolute top-4 right-4 font-mono text-[0.55rem] tracking-widest
+                                   px-2 py-0.5 border border-[#0ea5e9] text-[#0ea5e9] uppercase"
+                  >
+                    NEW
+                  </span>
+                )}
                 <Icon
                   size={28}
                   className="text-[#0ea5e9] mb-4"
