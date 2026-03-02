@@ -15,7 +15,7 @@ export default function Hero() {
                       mb-8 animate-fade-up"
       >
         <span className="w-1.5 h-1.5 rounded-full bg-[#0ea5e9] animate-pulse-dot" />
-       MVP v2.0 — now available
+       MVP v2.1 — now available
       </div>
 
       {/* Title */}
